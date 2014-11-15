@@ -9,12 +9,13 @@ import java.util.Comparator;
 import java.util.HashMap;
 
 public class MIQ_Algo {
-	    private int min_util=27;
+	    private int min_util=35;
 	    public static HashMap<String,Integer> TWU=new HashMap<String,Integer>();
 	    public ArrayList<ItemSet> ItemSet=new ArrayList<ItemSet>();
-	    public HashMap<String,Integer> min=new HashMap<String,Integer>();
-	    public HashMap<String,Integer> max=new HashMap<String,Integer>();
-	    public HashMap<String,Integer> real=new HashMap<String,Integer>();
+	    public static HashMap<String,Integer> min=new HashMap<String,Integer>();
+	    public static HashMap<String,Integer> max=new HashMap<String,Integer>();
+	    public static HashMap<String,Integer> real=new HashMap<String,Integer>();
+	    public static HashMap<String,Integer> global_support=new HashMap<String,Integer>();
 	   public void first_scan(String args)
 	   {String read;
     try {
@@ -28,7 +29,7 @@ public class MIQ_Algo {
 			ItemSet i=new ItemSet(itemset,Integer.parseInt(split[1]));
 			ItemSet.add(i);
 			for(int l=0;l<itemset.length;l++)
-			{
+			{     
 				 Integer t=TWU.get(itemset[l]);
 				if(t==null)
 				{
@@ -39,6 +40,18 @@ public class MIQ_Algo {
 					t=t+Integer.parseInt(split[1]);
 				}
 				TWU.put(itemset[l],t);
+				Integer t1=global_support.get(itemset[l]);
+				if(t1==null)
+				{
+					global_support.put(itemset[l],1);
+				}
+				else
+				{
+					int value=global_support.get(itemset[l]);
+					value++;
+					global_support.put(itemset[l], value);
+				}
+				
 			}
 		}
 	} catch (Exception e) {
@@ -112,7 +125,7 @@ public class MIQ_Algo {
 				}
 			});*/
 		}
-	     r.createHeaderList(TWU);
+	     
 	     //r.local_tree();
 	} catch (Exception e) {
 		
@@ -124,4 +137,8 @@ public class MIQ_Algo {
 			int c = tWU.get(item2) - tWU.get(item1);
 			return c;
 		}
+	   public int min_util()
+	   {
+		   return min_util;
+	   }
 }

@@ -9,6 +9,11 @@ public class Item {
 		this.name=name;
 		this.utility=utility;
 	}
+	public Item(String name)
+	{
+		this.name=name;
+		
+	}
 	public void setUtility(int utility)
 	{
 		this.utility=utility;
