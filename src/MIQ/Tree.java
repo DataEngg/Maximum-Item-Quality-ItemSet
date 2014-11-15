@@ -201,7 +201,7 @@ public class Tree {
 			System.out.println();
 		    for(Node n:d.getValue())
 		    {
-		    	System.out.println(n.itemname+" "+n.count+" "+n.parent+" "+n.max+" "+n.nodeUtility+" "+n.nodeLink );
+		    	System.out.println("Name->"+n.itemname+" ; Max value of it-> "+n.max+" ; Node Utility of it-> "+n.nodeUtility);
 		    }
 		    System.out.println(" ----------------------------------End of Path "+count+"-----------------------------------------------------------------");
 		    System.out.println();
